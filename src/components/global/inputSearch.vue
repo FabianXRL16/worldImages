@@ -1,11 +1,16 @@
 <template>
-    <input type="text" placeholder="To Search image!">
+    <input type="text" @keyup.13="searchEnter" placeholder="To Search image!">
 </template>
 
 <script>
 export default {
   name: "inputSearch",
   props: {},
+  methods:{
+      searchEnter(){
+          this.$emit('hideMsg')
+      }
+  }
 };
 </script>
 

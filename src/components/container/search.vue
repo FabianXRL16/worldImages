@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <input-search />
+    <input-search @hideMsg="hideText" />
     <btn-base @hideMsg="hideText">
       <template v-slot:icon>
         <i class="fas fa-search"></i>
