@@ -9,6 +9,7 @@ export default {
   methods:{
       searchEnter(){
           this.$emit('hideMsg')
+          document.querySelector('input').value = ""
       }
   }
 };
