@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button @click="search">
     <slot name="text" />
     <slot name="icon" />
   </button>
@@ -9,6 +9,16 @@
 export default {
   name: "btnBase",
   props: {},
+  data(){
+      return{
+
+      }
+  },
+  methods:{
+      search(){
+          this.$emit('hideMsg')
+      }
+  }
 };
 </script>
 
