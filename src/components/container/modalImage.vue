@@ -8,7 +8,10 @@
       <div class="avatar"></div>
       <div class="description">
         <h1>{{ $store.state._item.name }}</h1>
-        <span>{{ $store.state._item.score }} <i class="fas fa-heart"></i></span>
+        <span>{{ $store.state._item.score }} <i class="fas fa-star"></i></span>
+        <div class="plusThreePoints">
+          <span>+3 <i class="fas fa-star"></i></span>
+        </div>
         <div class="actions">
           <btn-primary :like="true" @clickBtn="addLike">
             <template v-slot:icon>
@@ -41,10 +44,13 @@ export default {
   },
   methods: {
     addLike() {
-      let canvaModal = document.querySelector(".containerModalImage");
-      let modal = document.querySelector(".contentModal");
+      let $canvaModal = document.querySelector(".containerModalImage");
+      let $modal = document.querySelector(".contentModal");
+      let $plusThreePoints = document.querySelector(".plusThreePoints");
       this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
       this.$store.dispatch("addCountUser");
+      $plusThreePoints.style.transform = "translateY(-120px)";
+      $plusThreePoints.style.transition = "1s";
       //   let selector = `rule${this.data.id}`
       // let points = document.querySelector(selector);
       // if (parseInt(this.data.score) <= 18) {
@@ -53,9 +59,9 @@ export default {
       //     this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
       // }
       setTimeout(() => {
-        canvaModal.style.background = "transparent";
-        modal.style.transform = "scale(0)";
-        modal.style.transition = ".3s";
+        $canvaModal.style.background = "transparent";
+        $modal.style.transform = "scale(0)";
+        $modal.style.transition = ".3s";
         setTimeout(() => {
           this.$store.dispatch("showModalImage");
         }, 250);
@@ -146,6 +152,21 @@ span i {
 .actions {
   display: flex;
   gap: 20px;
+  position: relative;
+}
+.plusThreePoints {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-right: 145px;
+  transform: translateY(12px);
+  transition: 0.3s;
+}
+.plusThreePoints span,
+.plusThreePoints span i {
+  font-size: 45px;
+  color: #ff9800;
 }
 @media all and (max-width: 479px) {
   .contentModal {
@@ -169,6 +190,13 @@ span i {
   }
   .avatar {
     bottom: 150px;
+  }
+  .plusThreePoints {
+    transform: translate(10px, 10px);
+  }
+  .plusThreePoints span,
+  .plusThreePoints span i {
+    font-size: 35px;
   }
 }
 </style>
