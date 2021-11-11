@@ -1,6 +1,5 @@
 <template>
-  <div class="containerModalImage">
-    <div class="contentModal">
+    <div class="contentModalImage">
       <div
         class="image"
         :style="`background-image:url(${$store.state._item.img});`"
@@ -32,7 +31,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -44,8 +42,8 @@ export default {
   },
   methods: {
     addLike() {
-      let $canvaModal = document.querySelector(".containerModalImage");
-      let $modal = document.querySelector(".contentModal");
+      let $canvaModal = document.querySelector(".containerModal");
+      let $modal = document.querySelector(".containerM");
       let $plusThreePoints = document.querySelector(".plusThreePoints");
       this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
       this.$store.dispatch("addCountUser");
@@ -72,27 +70,9 @@ export default {
 </script>
 
 <style scoped>
-.containerModalImage {
-  position: absolute;
+.contentModalImage {
   width: 100%;
   height: 100%;
-  background: rgba(20, 20, 20, 0.5);
-  backdrop-filter: blur(8px);
-  top: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: scale(1);
-  transition: 0.3s;
-}
-.contentModal {
-  width: 400px;
-  height: 600px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  color: #21d3b5;
-  box-shadow: rgba(255, 255, 255, 0.15) 1.95px 1.95px 2.6px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -170,10 +150,6 @@ span i {
   text-shadow: 2px 2px 10px rgba(255, 255, 255, 1);
 }
 @media all and (max-width: 479px) {
-  .contentModal {
-    width: 85%;
-    height: 80%;
-  }
   .image {
     width: 100%;
     height: 65%;

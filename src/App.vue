@@ -8,7 +8,7 @@
 
 <script>
 import wiHeader from './components/custom/wiHeader.vue';
-import modalImage from './components/container/modalImage.vue';
+import modalImage from './components/container/modalContainer.vue';
 export default {
   name: "App",
   components:{

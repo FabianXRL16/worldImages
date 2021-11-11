@@ -27,8 +27,8 @@ export default {
       this.like ? this.$emit("clickBtn") : this.closedModal();
     },
     closedModal() {
-      let canvaModal = document.querySelector(".containerModalImage");
-      let modal = document.querySelector(".contentModal");
+      let canvaModal = document.querySelector(".containerModal");
+      let modal = document.querySelector(".containerM");
       setTimeout(() => {
         canvaModal.style.background = "transparent";
         modal.style.transform = "scale(0)";
