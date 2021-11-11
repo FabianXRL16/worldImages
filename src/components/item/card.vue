@@ -1,15 +1,15 @@
 <template>
   <button @click="watch" class="card">
-    <div class="img"></div>
+    <div class="img" :style="`background-image:url(${data.img});`"></div>
     <div class="seller">
       <i class="fas fa-user"></i>
-      <span>Fabian Pacherres sad as dasdddddddddddddddd as d as</span>
+      <span>{{ data.name }}</span>
     </div>
     <div class="countCanvas"></div>
     <div class="countContainer">
       <div class="count">
         <i class="fas fa-star"></i>
-        <label class="score">0</label>
+        <label class="score">{{ data.score }}</label>
         <div class="rule"></div>
       </div>
     </div>
@@ -19,16 +19,20 @@
 <script>
 export default {
   name: "card",
-  props: {},
+  props: {
+    data: {
+      type: Object,
+      default: () => {},
+    },
+  },
   components: {},
   methods: {
     watch() {
       let points = document.querySelector(".rule");
-      let score = document.querySelector(".score");
-      if (parseInt(score.innerHTML) <= 18) {
+      if (parseInt(this.data.score) <= 18) {
         points.style.width = `${points.offsetWidth + 9.833}px`;
-        score.innerHTML =
-          score.innerHTML === "18" ? "20" : parseInt(score.innerHTML) + 3;
+        this.data.score =
+          this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
       }
     },
   },
@@ -54,7 +58,7 @@ export default {
   position: relative;
 }
 .img {
-  background-image: url(https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg);
+  /* background-image: url(https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -64,6 +68,10 @@ export default {
 }
 .card:hover {
   transform: scale(0.98);
+  transition: 0.3s;
+}
+.card:hover .seller {
+  background-color: #106e5f;
   transition: 0.3s;
 }
 .seller {
@@ -76,6 +84,7 @@ export default {
   background: #21d3b5;
   padding: 0 20px;
   box-sizing: border-box;
+  transition: 0.3s;
 }
 i {
   font-size: 18px;
