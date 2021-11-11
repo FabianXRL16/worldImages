@@ -1,5 +1,5 @@
 <template>
-  <button @click="watch" class="card">
+  <button @click="watch" class="card" :disabled="$store.state._count === 3">
     <div class="img" :style="`background-image:url(${data.img});`"></div>
     <div class="seller">
       <i class="fas fa-user"></i>
@@ -28,15 +28,8 @@ export default {
   components: {},
   methods: {
     watch() {
-      let selector = `rule${this.data.id}`
-      // let points = document.querySelector(selector);
-      // if (parseInt(this.data.score) <= 18) {
-      //   points.style.width = `${points.offsetWidth + 9.833}px`;
-      //   this.data.score =
-      //     this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
-      // }
-      console.log(selector);
       this.$store.dispatch("showModalImage");
+      this.$store.dispatch("sendDataItem", this.data.id);
     },
   },
 };

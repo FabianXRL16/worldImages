@@ -1,11 +1,14 @@
 <template>
   <div class="containerModalImage">
     <div class="contentModal">
-      <div class="image"></div>
+      <div
+        class="image"
+        :style="`background-image:url(${$store.state._item.img});`"
+      ></div>
       <div class="avatar"></div>
       <div class="description">
-        <h1>Fabian Pacherres</h1>
-        <span>12 <i class="fas fa-heart"></i></span>
+        <h1>{{ $store.state._item.name }}</h1>
+        <span>{{ $store.state._item.score }} <i class="fas fa-heart"></i></span>
         <div class="actions">
           <btn-primary :like="true" @clickBtn="addLike">
             <template v-slot:icon>
@@ -38,9 +41,17 @@ export default {
   },
   methods: {
     addLike() {
-      console.log("hola");
       let canvaModal = document.querySelector(".containerModalImage");
       let modal = document.querySelector(".contentModal");
+      this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
+      this.$store.dispatch("addCountUser");
+      //   let selector = `rule${this.data.id}`
+      // let points = document.querySelector(selector);
+      // if (parseInt(this.data.score) <= 18) {
+      //   points.style.width = `${points.offsetWidth + 9.833}px`;
+      //   this.data.score =
+      //     this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
+      // }
       setTimeout(() => {
         canvaModal.style.background = "transparent";
         modal.style.transform = "scale(0)";
@@ -81,7 +92,6 @@ export default {
   flex-direction: column;
 }
 .image {
-  background-image: url(https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
