@@ -2,15 +2,17 @@
   <div id="app">
     <wiHeader />
     <router-view/>
+    <modal-image v-if="$store.state.modalImage" />
   </div>
 </template>
 
 <script>
 import wiHeader from './components/custom/wiHeader.vue';
+import modalImage from './components/container/modalImage.vue';
 export default {
   name: "App",
   components:{
-    wiHeader
+    wiHeader, modalImage
   }
 };
 </script>
@@ -31,5 +33,6 @@ body{
 #app {
   text-align: center;
   color: #ffffff;
+  position: relative;
 }
 </style>
