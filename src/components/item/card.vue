@@ -35,7 +35,8 @@ export default {
       //   this.data.score =
       //     this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
       // }
-      console.log(selector)
+      console.log(selector);
+      this.$store.dispatch("showModalImage");
     },
   },
 };
