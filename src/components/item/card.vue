@@ -140,6 +140,7 @@ span {
   font-size: 12px;
   line-height: 12px;
   z-index: 1;
+  font-weight: 600;
 }
 @media all and (min-width: 960px) {
   .card {
