@@ -22,10 +22,10 @@
           </btn-primary>
           <btn-primary :like="false">
             <template v-slot:icon>
-              <i class="fas fa-times"></i>
+              <i class="fas fa-chevron-left"></i>
             </template>
             <template v-slot:text>
-              <span class="text">Cancelar</span>
+              <span class="text">Regresar</span>
             </template>
           </btn-primary>
         </div>
