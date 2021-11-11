@@ -167,6 +167,7 @@ span i {
 .plusThreePoints span i {
   font-size: 45px;
   color: #ff9800;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 1);
 }
 @media all and (max-width: 479px) {
   .contentModal {
