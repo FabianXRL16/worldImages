@@ -10,7 +10,7 @@
       <div class="count">
         <i class="fas fa-star"></i>
         <label class="score">{{ data.score }}</label>
-        <div class="rule"></div>
+        <div class="rule" :class="`rule${data.id}`"></div>
       </div>
     </div>
   </button>
@@ -28,12 +28,14 @@ export default {
   components: {},
   methods: {
     watch() {
-      let points = document.querySelector(".rule");
-      if (parseInt(this.data.score) <= 18) {
-        points.style.width = `${points.offsetWidth + 9.833}px`;
-        this.data.score =
-          this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
-      }
+      let selector = `rule${this.data.id}`
+      // let points = document.querySelector(selector);
+      // if (parseInt(this.data.score) <= 18) {
+      //   points.style.width = `${points.offsetWidth + 9.833}px`;
+      //   this.data.score =
+      //     this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
+      // }
+      console.log(selector)
     },
   },
 };
