@@ -142,7 +142,7 @@ h1 {
   margin: 0;
 }
 span {
-  color: #485250;
+  color: #ff9800;
   margin: 2px 0 10px 0;
   font-size: 14px;
 }
