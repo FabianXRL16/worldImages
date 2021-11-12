@@ -2,7 +2,7 @@
   <div class="containerModal">
     <div class="containerM">
       <modalImageContent v-if="$store.state.modalImage" />
-      <modalWinSeller />
+      <modalWinSeller v-if="$store.state.modalWin" />
     </div>
   </div>
 </template>

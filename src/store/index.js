@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     modal: false,
     modalImage: false,
-    modalMsg: false,
+    modalWin: false,
     _data: [
       {
         id: 0,
@@ -76,7 +76,7 @@ export default new Vuex.Store({
   getters: {
     getModal: (state) => state.modal,
     getModalImage: (state) => state.modalImage,
-    getModalMsg: (state) => state.modalMsg,
+    getModalWin: (state) => state.modalWin,
     getData: (state) => state._data,
     getItem: (state) => state._item,
     getCount: (state) => state._count,
@@ -88,8 +88,8 @@ export default new Vuex.Store({
     showModalImage({ commit }) {
       commit("CHANGE_STATE_MODAL_IMAGE");
     },
-    showModalMsg({ commit }) {
-      commit("CHANGE_STATE_MODAL_MSG");
+    showModalWin({ commit }) {
+      commit("CHANGE_STATE_MODAL_WIN");
     },
     sendDataItem({ commit }, id) {
       commit("SEND_DATA_ITEM", id);
@@ -108,8 +108,8 @@ export default new Vuex.Store({
     CHANGE_STATE_MODAL_IMAGE(state) {
       state.modalImage = !state.modalImage;
     },
-    CHANGE_STATE_MODAL_MSG(state) {
-      state.modalMsg = !state.modalMsg;
+    CHANGE_STATE_MODAL_WIN(state) {
+      state.modalWin = !state.modalWin;
     },
     SEND_DATA_ITEM(state, id) {
       state._item = {}
