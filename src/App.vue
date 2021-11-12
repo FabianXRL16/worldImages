@@ -2,7 +2,7 @@
   <div id="app">
     <wiHeader />
     <router-view/>
-    <modal-image v-if="$store.state.modalImage" />
+    <modal-image v-if="$store.state.modal" />
   </div>
 </template>
 

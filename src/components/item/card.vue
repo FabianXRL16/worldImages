@@ -28,6 +28,7 @@ export default {
   components: {},
   methods: {
     watch() {
+      this.$store.dispatch("showModal");
       this.$store.dispatch("showModalImage");
       this.$store.dispatch("sendDataItem", this.data.id);
     },

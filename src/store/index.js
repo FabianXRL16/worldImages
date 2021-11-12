@@ -5,9 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    modal: false,
     modalImage: false,
     modalMsg: false,
-    modalLogin: false,
     _data: [
       {
         id: 0,
@@ -74,22 +74,22 @@ export default new Vuex.Store({
     _count: 0
   },
   getters: {
+    getModal: (state) => state.modal,
     getModalImage: (state) => state.modalImage,
     getModalMsg: (state) => state.modalMsg,
-    getModalLogin: (state) => state.modalLogin,
     getData: (state) => state._data,
     getItem: (state) => state._item,
     getCount: (state) => state._count,
   },
   actions: {
+    showModal({ commit }) {
+      commit("CHANGE_STATE_MODAL");
+    },
     showModalImage({ commit }) {
       commit("CHANGE_STATE_MODAL_IMAGE");
     },
     showModalMsg({ commit }) {
       commit("CHANGE_STATE_MODAL_MSG");
-    },
-    showModalLogin({ commit }) {
-      commit("CHANGE_STATE_MODAL_LOGIN");
     },
     sendDataItem({ commit }, id) {
       commit("SEND_DATA_ITEM", id);
@@ -102,14 +102,14 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    CHANGE_STATE_MODAL(state) {
+      state.modal = !state.modal;
+    },
     CHANGE_STATE_MODAL_IMAGE(state) {
       state.modalImage = !state.modalImage;
     },
     CHANGE_STATE_MODAL_MSG(state) {
       state.modalMsg = !state.modalMsg;
-    },
-    CHANGE_STATE_MODAL_LOGIN(state) {
-      state.modalLogin = !state.modalLogin;
     },
     SEND_DATA_ITEM(state, id) {
       state._item = {}

@@ -34,6 +34,7 @@ export default {
         modal.style.transform = "scale(0)";
         modal.style.transition = ".3s";
         setTimeout(() => {
+          this.$store.dispatch("showModal");
           this.$store.dispatch("showModalImage");
         }, 250);
       }, 300);

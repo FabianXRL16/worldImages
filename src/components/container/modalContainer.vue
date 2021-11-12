@@ -1,17 +1,20 @@
 <template>
   <div class="containerModal">
     <div class="containerM">
-      <modalImageContent />
+      <modalImageContent v-if="$store.state.modalImage" />
+      <modalWinSeller />
     </div>
   </div>
 </template>
 
 <script>
 import modalImageContent from "../container/modalImageContent.vue";
+import modalWinSeller from "../container/modalWinSeller.vue";
 export default {
   name: "modalContainer",
   components: {
     modalImageContent,
+    modalWinSeller,
   },
   methods: {},
 };
