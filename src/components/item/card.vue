@@ -1,5 +1,5 @@
 <template>
-  <button @click="watch" class="card" :disabled="$store.state._count === 3">
+  <button @click="watch" class="card">
     <div class="img" :style="`background-image:url(${data.img});`"></div>
     <div class="seller">
       <i class="fas fa-user"></i>
@@ -28,8 +28,20 @@ export default {
   components: {},
   methods: {
     watch() {
-      this.$store.dispatch("showModal");
-      this.$store.dispatch("showModalImage");
+      if (this.$store.state._data[this.data.id].state) {
+        let $modalMsg = document.querySelector(".modalMsg");
+        $modalMsg.style.transform = `${
+          screen.width > 485 ? "translateY(100px)" : "translateY(80px)"
+        }`;
+        $modalMsg.style.transition = ".3s";
+        setTimeout(function () {
+          $modalMsg.style.transform = "translateY(-150px)";
+          $modalMsg.style.transition = ".3s";
+        }, 1500);
+      } else {
+        this.$store.dispatch("showModal");
+        this.$store.dispatch("showModalImage");
+      }
       this.$store.dispatch("sendDataItem", this.data.id);
     },
   },

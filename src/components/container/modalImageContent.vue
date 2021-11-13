@@ -46,7 +46,7 @@ export default {
       let $modal = document.querySelector(".containerM");
       let $plusThreePoints = document.querySelector(".plusThreePoints");
       this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
-      this.$store.dispatch("addCountUser");
+      this.$store.dispatch("addCountUser", this.$store.state._item.id);
       $plusThreePoints.style.transform = "translateY(-120px)";
       $plusThreePoints.style.transition = "1s";
       //   let selector = `rule${this.data.id}`
