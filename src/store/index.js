@@ -14,64 +14,73 @@ export default new Vuex.Store({
         name: "Fabian Pacherres",
         score: 0,
         img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
+        state: false,
       },
       {
         id: 1,
         name: "Andres Bautista",
         score: 0,
         img: "https://image.freepik.com/foto-gratis/hermoso-camino-madera-que-impresionantes-arboles-coloridos-bosque_181624-5840.jpg",
+        state: false,
       },
       {
         id: 2,
         name: "Mateo Campos",
         score: 0,
         img: "https://bptfotografia.com/wp-content/uploads/2021/06/fotografia-de-paisaje-que-es.jpg",
+        state: false,
       },
       {
         id: 3,
         name: "Luciana Bautista",
         score: 0,
         img: "https://www.dzoom.org.es/wp-content/uploads/2019/09/paisajes-expresivos-734x489.jpg",
+        state: false,
       },
       {
         id: 4,
         name: "Fabian Pacherres",
         score: 0,
         img: "https://conceptodefinicion.de/wp-content/uploads/2013/07/22390-green-wallpaper-nature-pc-wallpaper-free-nature-green-wallpapers_531x331-1.jpg",
+        state: false,
       },
       {
         id: 5,
         name: "Fabian Pacherres",
         score: 0,
         img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
+        state: false,
       },
       {
         id: 6,
         name: "Fabian Pacherres",
         score: 0,
         img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
+        state: false,
       },
       {
         id: 7,
         name: "Fabian Pacherres",
         score: 0,
         img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
+        state: false,
       },
       {
         id: 8,
         name: "Fabian Pacherres",
         score: 0,
         img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
+        state: false,
       },
       {
         id: 9,
         name: "Fabian Pacherres",
         score: 0,
         img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
+        state: false,
       },
     ],
     _item: {},
-    _count: 0
   },
   getters: {
     getModal: (state) => state.modal,
@@ -79,7 +88,6 @@ export default new Vuex.Store({
     getModalWin: (state) => state.modalWin,
     getData: (state) => state._data,
     getItem: (state) => state._item,
-    getCount: (state) => state._count,
   },
   actions: {
     showModal({ commit }) {
@@ -97,8 +105,8 @@ export default new Vuex.Store({
     addScoreSeller({ commit }, id) {
       commit("CHANGE_SCORE_DATA", id);
     },
-    addCountUser({ commit }) {
-      commit("ADD_COUNT_USER");
+    addCountUser({ commit }, id) {
+      commit("ADD_COUNT_USER", id);
     },
   },
   mutations: {
@@ -112,20 +120,14 @@ export default new Vuex.Store({
       state.modalWin = !state.modalWin;
     },
     SEND_DATA_ITEM(state, id) {
-      state._item = {}
+      state._item = {};
       state._item = state._data.find((item) => item.id === id);
     },
     CHANGE_SCORE_DATA(state, id) {
-      // state._data.find((item) => {
-      //   if (item.id === id) {
-      //     item.id += 3;
-      //     console.log(id);
-      //   }
-      // });
-      state._data[id].score += 3
+      state._data[id].score += 3;
     },
-    ADD_COUNT_USER(state) {
-      state._count+= 1;
+    ADD_COUNT_USER(state, id) {
+      state._data[id].state = true;
     },
   },
 });
