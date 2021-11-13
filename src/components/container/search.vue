@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-    <input-search @hideMsg="hideText" />
-    <btn-base @hideMsg="hideText">
+    <wi-input @actionInput="search" v-model="valueInput" />
+    <btn-base @actionInput="search">
       <template v-slot:icon>
         <i class="fas fa-search"></i>
       </template>
@@ -10,20 +10,26 @@
 </template>
 
 <script>
-import inputSearch from "../global/inputSearch.vue";
+import wiInput from "../custom/wiInput.vue";
 import btnBase from "../global/btnBase.vue";
 export default {
   name: "search",
   props: {},
+  data() {
+    return {
+      valueInput: "",
+    };
+  },
   components: {
-    inputSearch,
+    wiInput,
     btnBase,
   },
-  methods:{
-      hideText(){
-          this.$emit('noShowTitle')
-      }
-  }
+  methods: {
+    search() {
+      this.$emit("noShowTitle");
+      this.valueInput = "";
+    },
+  },
 };
 </script>
 

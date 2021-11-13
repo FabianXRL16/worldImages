@@ -9,16 +9,14 @@
 export default {
   name: "btnBase",
   props: {},
-  data(){
-      return{
-
-      }
+  data() {
+    return {};
   },
-  methods:{
-      search(){
-          this.$emit('hideMsg')
-      }
-  }
+  methods: {
+    search() {
+      this.$emit("actionInput");
+    },
+  },
 };
 </script>
 
@@ -36,11 +34,11 @@ button {
   right: 0;
   z-index: 1;
   overflow: auto;
-  transition: .3s;
+  transition: 0.3s;
 }
-button:hover{
-    background-color: #106e5f;
-    transition: .3s;
+button:hover {
+  background-color: #106e5f;
+  transition: 0.3s;
 }
 i {
   color: white;
