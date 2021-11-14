@@ -8,7 +8,7 @@
     <div class="description">
       <h1>{{ $store.state._item.name }}</h1>
       <span>{{ $store.state._item.score }} <i class="fas fa-star"></i></span>
-      <div class="plusThreePoints">
+      <div class="plusThreePoints" ref="plusPoint">
         <span>+3 <i class="fas fa-star"></i></span>
       </div>
       <div class="actions">
@@ -53,7 +53,7 @@ export default {
     addLike() {
       let $canvaModal = document.querySelector(".containerModal");
       let $modal = document.querySelector(".containerM");
-      
+
       this.animationPoint();
       // let selector = `rule${this.$store.state._item.id}`;
       // let points = document.querySelector(selector);
@@ -89,11 +89,10 @@ export default {
       }, 300);
     },
     animationPoint() {
-      let $plusThreePoints = document.querySelector(".plusThreePoints");
       this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
       this.$store.dispatch("addCountUser", this.$store.state._item.id);
-      $plusThreePoints.style.transform = "translateY(-120px)";
-      $plusThreePoints.style.transition = "1s";
+      this.$refs.plusPoint.style.transform = "translateY(-120px)";
+      this.$refs.plusPoint.style.transition = "1s";
       this.btnDisabled = true;
     },
   },
