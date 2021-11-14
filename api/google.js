@@ -7,9 +7,9 @@ const SEARCH_ENGINE_ID = "f0993fcdd83a64af9";
 export default async function getDataGoogle(search) {
   try {
     const response = await axios.get(
-      `${API}key=${KEY}&cx=${SEARCH_ENGINE_ID}&q=${search}&searchType=image`
+      `${API}key=${KEY}&cx=${SEARCH_ENGINE_ID}&q=${search}&searchType=image&num=6`
     );
-    return response.data.items
+    return response.data.items;
   } catch (error) {
     const err = new Error(error);
     console.error(err);
