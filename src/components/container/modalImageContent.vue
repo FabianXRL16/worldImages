@@ -51,10 +51,8 @@ export default {
   },
   methods: {
     addLike() {
-      let $canvaModal = document.querySelector(".containerModal");
-      let $modal = document.querySelector(".containerM");
-
       this.animationPoint();
+
       // let selector = `rule${this.$store.state._item.id}`;
       // let points = document.querySelector(selector);
       // if (parseInt(this.$store.state._item.score) <= 18) {
@@ -66,14 +64,8 @@ export default {
       // }
 
       setTimeout(() => {
-        $canvaModal.style.background = "transparent";
-        $modal.style.transform = "scale(0)";
-        $modal.style.transition = ".3s";
-        setTimeout(() => {
-          this.$store.dispatch("showModal");
-          this.$store.dispatch("showModalImage");
-        }, 250);
-      }, 1000);
+        this.closedModal()
+      }, 500);
     },
     closedModal() {
       let canvaModal = document.querySelector(".containerModal");
