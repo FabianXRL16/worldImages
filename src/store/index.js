@@ -137,7 +137,9 @@ export default new Vuex.Store({
       state._data[id].state = true;
     },
     SEND_IMAGES(state, nameImage){
-      getImagesGoogle(nameImage)
+      let respImages = getImagesGoogle(nameImage)
+      state._images.push(respImages)
+      return respImages
     }
   },
 });
