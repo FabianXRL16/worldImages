@@ -24,6 +24,9 @@ export default {
     wiInput,
     btnFloat,
   },
+  created(){
+    this.$store.dispatch("sendImages", "house");
+  },
   methods: {
     search() {
       this.$emit("noShowTitle");

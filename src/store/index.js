@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import getImagesGoogle from "../../api/google";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -81,6 +83,7 @@ export default new Vuex.Store({
       },
     ],
     _item: {},
+    _images:[]
   },
   getters: {
     getModal: (state) => state.modal,
@@ -88,6 +91,7 @@ export default new Vuex.Store({
     getModalWin: (state) => state.modalWin,
     getData: (state) => state._data,
     getItem: (state) => state._item,
+    getImages: (state) => state._images
   },
   actions: {
     showModal({ commit }) {
@@ -108,6 +112,9 @@ export default new Vuex.Store({
     addCountUser({ commit }, id) {
       commit("ADD_COUNT_USER", id);
     },
+    sendImages({commit}, nameImage){
+      commit('SEND_IMAGES', nameImage)
+    }
   },
   mutations: {
     CHANGE_STATE_MODAL(state) {
@@ -129,5 +136,8 @@ export default new Vuex.Store({
     ADD_COUNT_USER(state, id) {
       state._data[id].state = true;
     },
+    SEND_IMAGES(state, nameImage){
+      getImagesGoogle(nameImage)
+    }
   },
 });
