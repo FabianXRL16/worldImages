@@ -1,17 +1,17 @@
 <template>
   <div class="search">
     <wi-input @actionInput="search" v-model="valueInput" />
-    <btn-base @actionInput="search">
+    <btn-float @actionInput="search">
       <template v-slot:icon>
         <i class="fas fa-search"></i>
       </template>
-    </btn-base>
+    </btn-float>
   </div>
 </template>
 
 <script>
 import wiInput from "../custom/wiInput.vue";
-import btnBase from "../global/btnBase.vue";
+import btnFloat from "../global/btnFloat.vue";
 export default {
   name: "search",
   props: {},
@@ -22,7 +22,7 @@ export default {
   },
   components: {
     wiInput,
-    btnBase,
+    btnFloat,
   },
   methods: {
     search() {
