@@ -11,7 +11,7 @@
 
 <script>
 import wiInput from "../custom/wiInput.vue";
-import btnFloat from "../global/btnFloat.vue";
+import btnFloat from "../custom/btnFloat.vue";
 export default {
   name: "search",
   props: {},

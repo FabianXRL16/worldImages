@@ -20,7 +20,11 @@
             <span class="text">Me gusta</span>
           </template>
         </btn-primary>
-        <btn-primary :primary="false" @clickBtn="closedModal">
+        <btn-primary
+          :primary="false"
+          @clickBtn="closedModal"
+          :disabled="btnDisabled"
+        >
           <template v-slot:icon>
             <i class="fas fa-chevron-left"></i>
           </template>
@@ -34,11 +38,16 @@
 </template>
 
 <script>
-import btnPrimary from "../global/btnPrimary.vue";
+import btnPrimary from "../custom/btnPrimary.vue";
 export default {
   name: "modalImage",
   components: {
     btnPrimary,
+  },
+  data() {
+    return {
+      btnDisabled: false,
+    };
   },
   methods: {
     addLike() {
@@ -49,6 +58,7 @@ export default {
       this.$store.dispatch("addCountUser", this.$store.state._item.id);
       $plusThreePoints.style.transform = "translateY(-120px)";
       $plusThreePoints.style.transition = "1s";
+      this.btnDisabled = true;
       //   let selector = `rule${this.data.id}`
       // let points = document.querySelector(selector);
       // if (parseInt(this.data.score) <= 18) {
