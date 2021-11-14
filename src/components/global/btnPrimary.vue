@@ -1,10 +1,5 @@
 <template>
-  <button
-    @click="action"
-    :style="`${
-      like ? 'background-color: #21d3b5;' : 'background-color: #f6264d;'
-    }`"
-  >
+  <button @click="action" :class="primary ? 'primary' : 'secondary'">
     <slot name="icon" />
     <slot name="text" />
   </button>
@@ -14,7 +9,7 @@
 export default {
   name: "btnPrimary",
   props: {
-    like: {
+    primary: {
       type: Boolean,
       default: true,
     },
@@ -24,20 +19,7 @@ export default {
   },
   methods: {
     action() {
-      this.like ? this.$emit("clickBtn") : this.closedModal();
-    },
-    closedModal() {
-      let canvaModal = document.querySelector(".containerModal");
-      let modal = document.querySelector(".containerM");
-      setTimeout(() => {
-        canvaModal.style.background = "transparent";
-        modal.style.transform = "scale(0)";
-        modal.style.transition = ".3s";
-        setTimeout(() => {
-          this.$store.dispatch("showModal");
-          this.$store.dispatch("showModalImage");
-        }, 250);
-      }, 300);
+      this.$emit("clickBtn");
     },
   },
 };
@@ -52,6 +34,22 @@ button {
   border: none;
   cursor: pointer;
   padding: 0 20px;
+}
+.primary {
+  background-color: #21d3b5;
+  transition: .3s;
+}
+.primary:hover {
+  background-color: #106e5f;
+  transition: .3s;
+}
+.secondary {
+  background-color: #f6264d;
+  transition: .3s;
+}
+.secondary:hover {
+  background-color: #be0e2e;
+  transition: .3s;
 }
 i,
 .text {

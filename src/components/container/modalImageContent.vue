@@ -1,36 +1,36 @@
 <template>
-    <div class="contentModalImage">
-      <div
-        class="image"
-        :style="`background-image:url(${$store.state._item.img});`"
-      ></div>
-      <div class="avatar"></div>
-      <div class="description">
-        <h1>{{ $store.state._item.name }}</h1>
-        <span>{{ $store.state._item.score }} <i class="fas fa-star"></i></span>
-        <div class="plusThreePoints">
-          <span>+3 <i class="fas fa-star"></i></span>
-        </div>
-        <div class="actions">
-          <btn-primary :like="true" @clickBtn="addLike">
-            <template v-slot:icon>
-              <i class="fas fa-heart"></i>
-            </template>
-            <template v-slot:text>
-              <span class="text">Me gusta</span>
-            </template>
-          </btn-primary>
-          <btn-primary :like="false">
-            <template v-slot:icon>
-              <i class="fas fa-chevron-left"></i>
-            </template>
-            <template v-slot:text>
-              <span class="text">Regresar</span>
-            </template>
-          </btn-primary>
-        </div>
+  <div class="contentModalImage">
+    <div
+      class="image"
+      :style="`background-image:url(${$store.state._item.img});`"
+    ></div>
+    <div class="avatar"></div>
+    <div class="description">
+      <h1>{{ $store.state._item.name }}</h1>
+      <span>{{ $store.state._item.score }} <i class="fas fa-star"></i></span>
+      <div class="plusThreePoints">
+        <span>+3 <i class="fas fa-star"></i></span>
+      </div>
+      <div class="actions">
+        <btn-primary @clickBtn="addLike">
+          <template v-slot:icon>
+            <i class="fas fa-heart"></i>
+          </template>
+          <template v-slot:text>
+            <span class="text">Me gusta</span>
+          </template>
+        </btn-primary>
+        <btn-primary :primary="false" @clickBtn="closedModal">
+          <template v-slot:icon>
+            <i class="fas fa-chevron-left"></i>
+          </template>
+          <template v-slot:text>
+            <span class="text">Regresar</span>
+          </template>
+        </btn-primary>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -65,6 +65,19 @@ export default {
           this.$store.dispatch("showModalImage");
         }, 250);
       }, 1000);
+    },
+    closedModal() {
+      let canvaModal = document.querySelector(".containerModal");
+      let modal = document.querySelector(".containerM");
+      setTimeout(() => {
+        canvaModal.style.background = "transparent";
+        modal.style.transform = "scale(0)";
+        modal.style.transition = ".3s";
+        setTimeout(() => {
+          this.$store.dispatch("showModal");
+          this.$store.dispatch("showModalImage");
+        }, 250);
+      }, 300);
     },
   },
 };
