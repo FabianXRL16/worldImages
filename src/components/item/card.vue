@@ -25,7 +25,6 @@ export default {
       default: () => {},
     },
   },
-  components: {},
   methods: {
     watch() {
       if (this.$store.state._data[this.data.id].state) {
@@ -67,7 +66,6 @@ export default {
   position: relative;
 }
 .img {
-  /* background-image: url(https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

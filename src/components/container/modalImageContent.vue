@@ -53,19 +53,18 @@ export default {
     addLike() {
       let $canvaModal = document.querySelector(".containerModal");
       let $modal = document.querySelector(".containerM");
-      let $plusThreePoints = document.querySelector(".plusThreePoints");
-      this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
-      this.$store.dispatch("addCountUser", this.$store.state._item.id);
-      $plusThreePoints.style.transform = "translateY(-120px)";
-      $plusThreePoints.style.transition = "1s";
-      this.btnDisabled = true;
-      //   let selector = `rule${this.data.id}`
+      
+      this.animationPoint();
+      // let selector = `rule${this.$store.state._item.id}`;
       // let points = document.querySelector(selector);
-      // if (parseInt(this.data.score) <= 18) {
+      // if (parseInt(this.$store.state._item.score) <= 18) {
       //   points.style.width = `${points.offsetWidth + 9.833}px`;
-      //   this.data.score =
-      //     this.data.score === "18" ? "20" : parseInt(this.data.score) + 3;
+      //   this.$store.state._item.score =
+      //     this.$store.state._item.score === "18"
+      //       ? "20"
+      //       : parseInt(this.$store.state._item.score) + 3;
       // }
+
       setTimeout(() => {
         $canvaModal.style.background = "transparent";
         $modal.style.transform = "scale(0)";
@@ -88,6 +87,14 @@ export default {
           this.$store.dispatch("showModalImage");
         }, 250);
       }, 300);
+    },
+    animationPoint() {
+      let $plusThreePoints = document.querySelector(".plusThreePoints");
+      this.$store.dispatch("addScoreSeller", this.$store.state._item.id);
+      this.$store.dispatch("addCountUser", this.$store.state._item.id);
+      $plusThreePoints.style.transform = "translateY(-120px)";
+      $plusThreePoints.style.transition = "1s";
+      this.btnDisabled = true;
     },
   },
 };
