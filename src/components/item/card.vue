@@ -13,7 +13,7 @@
       <div class="count">
         <i class="fas fa-star"></i>
         <label class="score">{{ data.score }}</label>
-        <div class="rule" :class="`rule${data.score}`"></div>
+        <div class="rule" :style="styles"></div>
       </div>
     </div>
   </button>
@@ -27,6 +27,18 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+  computed:{
+    width() {
+      const BAR_WIDTH = 80;
+      const MAX_SCORE = 20;
+      return BAR_WIDTH / MAX_SCORE * this.data.score;
+    },
+    styles(){
+      return {
+        width: `${this.width}px`
+      }
+    }
   },
   methods: {
     watch() {
@@ -147,7 +159,7 @@ span {
 }
 .rule {
   height: 12px;
-  width: 12px;
+  width: 0;
   border-radius: 6px;
   position: absolute;
   left: 0;
