@@ -1,6 +1,9 @@
 <template>
   <div class="containerModal">
-    <div class="containerM">
+    <div
+      class="containerM"
+      :class="$store.state.modal ? 'animationOpenModel' : 'animationOffModel'"
+    >
       <modalImageContent v-if="$store.state.modalImage" />
       <modalWinSeller v-else />
     </div>
@@ -32,8 +35,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(1);
-  transition: 0.3s;
 }
 .containerM {
   width: 400px;
@@ -42,6 +43,28 @@ export default {
   background-color: var(--white);
   color: var(--bg-primary);
   box-shadow: rgba(255, 255, 255, 0.15) 1.95px 1.95px 2.6px;
+}
+.animationOpenModel {
+  animation: showModal ease-in 0.3s;
+}
+@keyframes showModal {
+  to {
+    transform: scale(1);
+  }
+  from {
+    transform: scale(0);
+  }
+}
+.animationOffModel {
+  animation: hideModal 0.3s ease-in 2s;
+}
+@keyframes hideModal {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
 }
 @media all and (max-width: 479px) {
   .containerM {
