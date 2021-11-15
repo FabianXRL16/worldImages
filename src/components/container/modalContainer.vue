@@ -39,8 +39,8 @@ export default {
   width: 400px;
   height: 600px;
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #21d3b5;
+  background-color: var(--white);
+  color: var(--bg-primary);
   box-shadow: rgba(255, 255, 255, 0.15) 1.95px 1.95px 2.6px;
 }
 @media all and (max-width: 479px) {

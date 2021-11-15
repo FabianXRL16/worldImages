@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 input {
-  background-color: white;
+  background-color: var(--white);
   width: 100%;
   height: 50px;
   border-radius: 25px;
@@ -45,9 +45,9 @@ input {
   padding: 0 55px 0 20px;
   box-sizing: border-box;
   font-size: 20px;
-  color: #21d3b5;
+  color: var(--bg-primary);
 }
 input::placeholder {
-  color: #21d3b5af;
+  color: var(--bg-primary-extralight);
 }
 </style>

@@ -118,7 +118,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 8px solid #21d3b5;
+  border: 8px solid var(--bg-primary);
   box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 }
 .description {
@@ -139,7 +139,7 @@ h1 {
   margin: 0;
 }
 span {
-  color: #ff9800;
+  color: var(--yellow);
   margin: 2px 0 10px 0;
   font-size: 14px;
 }
@@ -163,7 +163,7 @@ span i {
 .plusThreePoints span,
 .plusThreePoints span i {
   font-size: 45px;
-  color: #ff9800;
+  color: var(--yellow);
   text-shadow: 2px 2px 10px rgba(255, 255, 255, 1);
 }
 @media all and (max-width: 479px) {

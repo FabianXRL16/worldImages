@@ -80,7 +80,7 @@ export default {
   background: transparent;
   cursor: pointer;
   padding: 0;
-  color: white;
+  color: var(--white);
   position: relative;
 }
 .img {
@@ -96,7 +96,7 @@ export default {
   transition: 0.3s;
 }
 .card:hover .seller {
-  background-color: #106e5f;
+  background-color: var(--bg-primary-dark);
   transition: 0.3s;
 }
 .seller {
@@ -106,7 +106,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #21d3b5;
+  background: var(--bg-primary);
   padding: 0 20px;
   box-sizing: border-box;
   transition: 0.3s;
@@ -138,7 +138,7 @@ span {
   pointer-events: none;
 }
 .countContainer {
-  background-color: #485250;
+  background-color: var(--gray);
   width: 80px;
   height: 12px;
   border-radius: 8px;
@@ -166,7 +166,7 @@ span {
   border-radius: 6px;
   position: absolute;
   left: 0;
-  background: #ff9800;
+  background: var(--yellow);
   z-index: 0;
 }
 .count i,

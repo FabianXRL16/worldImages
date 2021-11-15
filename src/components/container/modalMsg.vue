@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .modalMsg {
-  background-color: #21d3b5;
+  background-color: var(--bg-primary);
   max-width: 500px;
   width: 80%;
   height: auto;

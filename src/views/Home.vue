@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 .home {
-  background-color: #21d3b565;
+  background-color: var(--bg-primary-light);
   width: 100%;
   height: calc(100vh - 60px);
   box-sizing: border-box;

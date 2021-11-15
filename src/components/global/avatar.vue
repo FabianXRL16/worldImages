@@ -39,7 +39,7 @@ img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 3px solid #fff;
+  border: 3px solid var(--white);
 }
 @media all and (max-width: 479px) {
   .avatar {

@@ -29,7 +29,7 @@ export default {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 8px solid #21d3b5;
+  border: 8px solid var(--bg-primary);
 }
 h1 {
   width: 75%;
@@ -39,7 +39,7 @@ h1 {
   font-weight: 600;
 }
 p {
-  color: #ff9800;
+  color: var(--yellow);
   font-size: 20px;
   font-weight: 500;
   margin: 15px 0 0;
@@ -48,7 +48,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ff9800;
+  color: var(--yellow);
   gap: 2px;
 }
 .scoreFinal span {
@@ -64,8 +64,8 @@ button {
   cursor: pointer;
   border: none;
   font-weight: 500;
-  background-color: #21d3b5;
-  color: #fff;
+  background-color: var(--bg-primary);
+  color: var(--white);
   padding: 0 40px;
   height: 50px;
   border-radius: 25px;
@@ -77,7 +77,7 @@ button i {
   margin-right: 12px;
 }
 button:hover{
-  background-color: #106e5f;
+  background-color: var(--bg-primary-dark);
   transition: .3s;
 }
 @media all and (max-width: 479px) {

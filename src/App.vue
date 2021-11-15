@@ -33,10 +33,18 @@ body {
   --bg-primary: #21d3b5;
   --bg-primary-dark: #106e5f;
   --bg-primary-light: #21d3b565;
+  --bg-primary-extralight: #21d3b5af;
+
+  --white: #fff;
+  --gray: #485250;
+  --yellow: #ff9800;
+
+  --pink: #f6264d;
+  --pink-dark: #be0e2e;
 }
 #app {
   text-align: center;
-  color: #ffffff;
+  color: var(--white);
   position: relative;
 }
 </style>

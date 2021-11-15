@@ -36,24 +36,24 @@ button {
   padding: 0 20px;
 }
 .primary {
-  background-color: #21d3b5;
-  transition: .3s;
+  background-color: var(--bg-primary);
+  transition: 0.3s;
 }
 .primary:hover {
-  background-color: #106e5f;
-  transition: .3s;
+  background-color: var(--bg-primary-dark);
+  transition: 0.3s;
 }
 .secondary {
-  background-color: #f6264d;
-  transition: .3s;
+  background-color: var(--pink);
+  transition: 0.3s;
 }
 .secondary:hover {
-  background-color: #be0e2e;
-  transition: .3s;
+  background-color: var(--pink-dark);
+  transition: 0.3s;
 }
 i,
 .text {
-  color: white;
+  color: var(--white);
   font-size: 20px;
 }
 .text {
@@ -62,7 +62,7 @@ i,
 @media all and (max-width: 479px) {
   i,
   .text {
-    color: white;
+    color: var(--white);
     font-size: 14px;
   }
   .text {

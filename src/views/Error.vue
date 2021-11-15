@@ -24,7 +24,7 @@ export default {
 .error {
   width: 100%;
   height: calc(100vh - 60px);
-  color: #21d3b5;
+  color: var(--bg-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +47,7 @@ export default {
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-  border-left: 2px solid #21d3b5;
+  border-left: 2px solid var(--bg-primary);
   padding-left: 20px;
 }
 .msgError h2,
@@ -66,7 +66,7 @@ export default {
 }
 .back {
   text-decoration: none;
-  color: #21d3b5;
+  color: var(--bg-primary);
   font-size: 20px;
   transition: 0.3s;
 }
@@ -74,7 +74,7 @@ export default {
   margin-right: 10px;
 }
 .back:hover {
-  color: #106e5f;
+  color: var(--bg-primary-dark);
   transition: 0.3s;
 }
 @media all and (min-width: 480px) and (max-width: 959px) {

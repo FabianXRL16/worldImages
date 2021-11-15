@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 button {
-  background: #21d3b5;
+  background: var(--bg-primary);
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -37,11 +37,11 @@ button {
   transition: 0.3s;
 }
 button:hover {
-  background-color: #106e5f;
+  background-color: var(--bg-primary-dark);
   transition: 0.3s;
 }
 i {
-  color: white;
+  color: var(--white);
   font-size: 20px;
 }
 </style>

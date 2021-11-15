@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 header {
-  background-color: #21d3b5;
+  background-color: var(--bg-primary);
   width: 100vw;
   height: 60px;
 }
@@ -36,7 +36,7 @@ header {
 }
 a {
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
 }
 .logo {
   display: flex;
