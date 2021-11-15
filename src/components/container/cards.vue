@@ -1,5 +1,5 @@
 <template>
-  <div class="containerImages">
+  <div :class="results ? 'containerImages' : 'containerEmpy'">
     <card
       v-for="item in $store.state._sellers"
       :data="item"
@@ -12,7 +12,12 @@
 import card from "../item/card.vue";
 export default {
   name: "cards",
-  props: {},
+  props: {
+    results: {
+      type: Boolean,
+      default: false,
+    },
+  },
   components: {
     card,
   },
@@ -27,10 +32,13 @@ export default {
 </script>
 
 <style scoped>
+.containerEmpy {
+  display: none;
+}
 .containerImages {
   width: 100%;
   min-height: calc(100vh - 270px);
-  display: none;
+  display: grid;
   overflow-y: scroll;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
@@ -41,13 +49,11 @@ export default {
   .containerImages {
     min-height: calc(100vh - 300px);
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    display: none;
   }
 }
 @media all and (max-width: 479px) {
   .containerImages {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    display: none;
   }
 }
 </style>
