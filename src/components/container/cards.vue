@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import "../item/card.vue";
 import card from "../item/card.vue";
 export default {
   name: "cards",
