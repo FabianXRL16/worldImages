@@ -2,7 +2,9 @@
   <div class="contentModalImage">
     <div
       class="image"
-      :style="`background-image:url(${$store.state._item.img});`"
+      :style="`background-image:url(${
+        $store.state._images[$store.state._item.id]
+      });`"
     ></div>
     <div class="avatar"></div>
     <div class="description">
@@ -12,7 +14,7 @@
         <span>+3 <i class="fas fa-star"></i></span>
       </div>
       <div class="actions">
-        <btn-primary @clickBtn="addLike">
+        <btn-primary @clickBtn="addLike" :disabled="btnDisabled">
           <template v-slot:icon>
             <i class="fas fa-heart"></i>
           </template>
@@ -64,7 +66,7 @@ export default {
       // }
 
       setTimeout(() => {
-        this.closedModal()
+        this.closedModal();
       }, 500);
     },
     closedModal() {
