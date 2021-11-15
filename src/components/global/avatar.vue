@@ -1,7 +1,6 @@
 <template>
-  <div class="avatar">
-    <!-- <h2>{{ $store.state._user.name.split(' ').slice(0,1).join(' ') }}</h2> -->
-    <h2>Fabian</h2>
+  <div v-if="name" class="avatar">
+    <h2>{{ firstName }}</h2>
     <img src="../../assets/user.jpg" alt="" />
   </div>
 </template>
@@ -10,6 +9,14 @@
 export default {
   name: "avatar",
   props: {},
+  computed: {
+    name() {
+      return this.$store?.state?._user?.name;
+    },
+    firstName() {
+      return this.name.split(" ").slice(0, 1).join(" ");
+    },
+  },
   created() {
     this.$store.dispatch("getUserAlegra");
   },
