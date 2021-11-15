@@ -96,7 +96,7 @@ export default {
   height: 400px;
 }
 .avatar {
-  background-image: url(https://i.pinimg.com/originals/e4/01/2c/e4012c936590b56462a9c6ea8d4fd1fc.jpg);
+  background-image: url("../../assets/avatar.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
