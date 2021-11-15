@@ -1,31 +1,33 @@
 <template>
   <div class="home">
-    <div class="container">
-      <h1 class="msg">A buscar!</h1>
-      <search @noShowTitle='hideTitle' />
-      <images />
+    <div class="container" ref="container">
+      <h1 :class="showResults ? 'empyTitle' : 'title'" ref="msg">A buscar!</h1>
+      <search @noShowTitle="hideTitle" />
+      <cards :results="showResults" />
     </div>
   </div>
 </template>
 
 <script>
 import search from "../components/container/search.vue";
-import images from "../components/container/cards.vue";
+import cards from "../components/container/cards.vue";
 export default {
   name: "Home",
   components: {
-    search, images
+    search,
+    cards,
   },
-  methods:{
-    hideTitle(){
-      let $title = document.querySelector('.msg');
-      let $container = document.querySelector('.container');
-      let $containerImages = document.querySelector('.containerImages');
-      $title.style.display = 'none';
-      $container.style.justifyContent = 'flex-start'
-      $containerImages.style.display = 'grid'
-    }
-  }
+  data() {
+    return {
+      showResults: false,
+    };
+  },
+  methods: {
+    hideTitle() {
+      this.$refs.container.style.placeContent = "flex-start";
+      this.showResults = true;
+    },
+  },
 };
 </script>
 
@@ -39,6 +41,7 @@ export default {
   place-content: center;
 }
 .container {
+  width: 100%;
   height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
@@ -46,17 +49,20 @@ export default {
   align-items: center;
   gap: 20px;
 }
-.msg {
+.title {
   margin: -50px 0 0;
   font-size: 60px;
   line-height: 60px;
+}
+.empyTitle {
+  display: none;
 }
 @media all and (min-width: 960px) {
   .container {
     width: 60vw;
     gap: 50px;
   }
-  .msg {
+  .title {
     margin: -50px 0 0;
     font-size: 75px;
   }
@@ -75,7 +81,7 @@ export default {
   .container {
     width: 90vw;
   }
-  .msg {
+  .title {
     font-size: 50px;
     line-height: 50px;
   }
