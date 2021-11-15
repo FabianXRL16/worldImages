@@ -3,95 +3,29 @@ import Vuex from "vuex";
 
 import getImagesGoogle from "../../api/google";
 
+import getSellers from "../../api/api";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     modal: false,
     modalImage: false,
-    modalWin: false,
-    _data: [
-      {
-        id: 0,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
-        state: false,
-      },
-      {
-        id: 1,
-        name: "Andres Bautista",
-        score: 0,
-        img: "https://image.freepik.com/foto-gratis/hermoso-camino-madera-que-impresionantes-arboles-coloridos-bosque_181624-5840.jpg",
-        state: false,
-      },
-      {
-        id: 2,
-        name: "Mateo Campos",
-        score: 0,
-        img: "https://bptfotografia.com/wp-content/uploads/2021/06/fotografia-de-paisaje-que-es.jpg",
-        state: false,
-      },
-      {
-        id: 3,
-        name: "Luciana Bautista",
-        score: 0,
-        img: "https://www.dzoom.org.es/wp-content/uploads/2019/09/paisajes-expresivos-734x489.jpg",
-        state: false,
-      },
-      {
-        id: 4,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://conceptodefinicion.de/wp-content/uploads/2013/07/22390-green-wallpaper-nature-pc-wallpaper-free-nature-green-wallpapers_531x331-1.jpg",
-        state: false,
-      },
-      {
-        id: 5,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
-        state: false,
-      },
-      {
-        id: 6,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
-        state: false,
-      },
-      {
-        id: 7,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
-        state: false,
-      },
-      {
-        id: 8,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
-        state: false,
-      },
-      {
-        id: 9,
-        name: "Fabian Pacherres",
-        score: 0,
-        img: "https://elviajerofeliz.com/wp-content/uploads/2015/09/paisajes-de-Canada.jpg",
-        state: false,
-      },
-    ],
     _item: {},
-    _images:[]
+    _images: [],
+    _sellers: [],
+    _user: {},
+    _stateSeller: false,
   },
   getters: {
     getModal: (state) => state.modal,
     getModalImage: (state) => state.modalImage,
-    getModalWin: (state) => state.modalWin,
     getData: (state) => state._data,
     getItem: (state) => state._item,
-    getImages: (state) => state._images
+    getImages: (state) => state._images,
+    getSellers: (state) => state._sellers,
+    getUser: (state) => state._user,
+    getStateSeller: (state) => state._stateSeller,
   },
   actions: {
     showModal({ commit }) {
@@ -99,9 +33,6 @@ export default new Vuex.Store({
     },
     showModalImage({ commit }) {
       commit("CHANGE_STATE_MODAL_IMAGE");
-    },
-    showModalWin({ commit }) {
-      commit("CHANGE_STATE_MODAL_WIN");
     },
     sendDataItem({ commit }, id) {
       commit("SEND_DATA_ITEM", id);
@@ -112,9 +43,18 @@ export default new Vuex.Store({
     addCountUser({ commit }, id) {
       commit("ADD_COUNT_USER", id);
     },
-    sendImages({commit}, nameImage){
-      commit('SEND_IMAGES', nameImage)
-    }
+    sendImages({ commit }, nameImage) {
+      commit("SEND_IMAGES", nameImage);
+    },
+    getSellersAlegra({ commit }) {
+      commit("GET_SELLERS");
+    },
+    getUserAlegra({ commit }) {
+      commit("GET_USER");
+    },
+    updateStateSeller({ commit }) {
+      commit("UPDATE_STATE_SELLER");
+    },
   },
   mutations: {
     CHANGE_STATE_MODAL(state) {
@@ -123,23 +63,50 @@ export default new Vuex.Store({
     CHANGE_STATE_MODAL_IMAGE(state) {
       state.modalImage = !state.modalImage;
     },
-    CHANGE_STATE_MODAL_WIN(state) {
-      state.modalWin = !state.modalWin;
-    },
-    SEND_DATA_ITEM(state, id) {
+    SEND_DATA_ITEM(state, identification) {
       state._item = {};
-      state._item = state._data.find((item) => item.id === id);
+      state._item = state._sellers.find(
+        (item) => item.identification === identification
+      );
     },
     CHANGE_SCORE_DATA(state, id) {
-      state._data[id].score += 3;
+      state._sellers[id].score += 3;
     },
     ADD_COUNT_USER(state, id) {
-      state._data[id].state = true;
+      state._sellers[id].state = true;
     },
-    SEND_IMAGES(state, nameImage){
-      let respImages = getImagesGoogle(nameImage)
-      state._images.push(respImages)
-      return respImages
-    }
+    UPDATE_STATE_SELLER(state) {
+      state._sellers.map((seller) => (seller.state = false));
+    },
+    async SEND_IMAGES(state, nameImage) {
+      let img = await getImagesGoogle(nameImage);
+      state._images = img.map((i) => i.link);
+    },
+    async GET_SELLERS(state) {
+      let arr = await getSellers();
+      arr
+        .filter((i) => i.type.includes("provider"))
+        .map((seller, i) =>
+          state._sellers.push({
+            name: seller.name,
+            identification: seller.identification,
+            score: 0,
+            state: false,
+            id: i,
+          })
+        );
+    },
+    async GET_USER(state) {
+      let arr = await getSellers();
+      arr
+        .filter((i) => i.type.includes("client"))
+        .map(
+          (user) =>
+            (state._user = {
+              name: user.name,
+              identification: user.identification,
+            })
+        );
+    },
   },
 });
