@@ -1,10 +1,10 @@
 <template>
   <div class="modalWiSeller">
     <img class="user" src="../../assets/user.jpg" alt="" />
-    <h1>Fabian Pacherres</h1>
+    <h1>{{ $store.state._item.name }}</h1>
     <p>Primero en llegar a!</p>
     <div class="scoreFinal"><span>20</span><i class="fas fa-star"></i></div>
-    <button><i class="fas fa-file-invoice"></i>Descargar Factura</button>
+    <button @click="getFacture"><i class="fas fa-file-invoice"></i>Generar Factura</button>
   </div>
 </template>
 
@@ -12,7 +12,16 @@
 export default {
   name: "modalContainer",
   components: {},
-  methods: {},
+  methods: {
+    getFacture(){
+      console.log(this.$store.state._item.id)
+      // this.$store.dispatch(
+      //   "getFacture",
+      //   this.data.identification,
+      //   this.index
+      // );
+    }
+  },
 };
 </script>
 
@@ -44,7 +53,7 @@ p {
   font-weight: 500;
   margin: 15px 0 0;
 }
-.scoreFinal{
+.scoreFinal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +63,7 @@ p {
 .scoreFinal span {
   font-size: 35px;
 }
-.scoreFinal i{
+.scoreFinal i {
   font-size: 25px;
   line-height: 25px;
   padding-bottom: 2px;
@@ -71,14 +80,14 @@ button {
   border-radius: 25px;
   font-size: 20px;
   margin-top: 20px;
-  transition: .3s;
+  transition: 0.3s;
 }
 button i {
   margin-right: 12px;
 }
-button:hover{
+button:hover {
   background-color: var(--bg-primary-dark);
-  transition: .3s;
+  transition: 0.3s;
 }
 @media all and (max-width: 479px) {
   h1 {

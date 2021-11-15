@@ -3,7 +3,7 @@
     <div
       class="image"
       :style="`background-image:url(${
-        $store.state._images[$store.state._item.id]
+        $store.state._images[$store.state._item.link]
       });`"
     ></div>
     <div class="avatar"></div>

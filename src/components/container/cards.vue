@@ -1,8 +1,9 @@
 <template>
   <div :class="results ? 'containerImages' : 'containerEmpy'">
     <card
-      v-for="item in $store.state._sellers"
+      v-for="(item, i) in $store.state._sellers"
       :data="item"
+      :i="i"
       :key="item.identification"
     />
   </div>

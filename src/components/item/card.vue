@@ -2,7 +2,7 @@
   <button @click="watch" class="card">
     <div
       class="img"
-      :style="`background-image:url(${$store.state._images[data.id]});`"
+      :style="`background-image:url(${$store.state._images[data.link]});`"
     ></div>
     <div class="seller">
       <i class="fas fa-user"></i>
@@ -27,6 +27,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    i:{
+      type: Number,
+      default: 0,
+    }
   },
   computed: {
     width() {
@@ -57,8 +61,7 @@ export default {
       }
       this.$store.dispatch(
         "sendDataItem",
-        this.data.identification,
-        this.index
+        this.data.id,
       );
     },
   },
