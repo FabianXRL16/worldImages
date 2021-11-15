@@ -2,7 +2,7 @@
   <input
     type="text"
     v-model="inputModel"
-    @keyup.13="keyUpCustom"
+    @keyup.enter="keyUpCustom"
     placeholder="To Search image!"
   />
 </template>
