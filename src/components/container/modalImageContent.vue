@@ -60,15 +60,18 @@ export default {
       }, 500);
     },
     closedModal() {
-      let canvaModal = document.querySelector(".containerModal");
-      let modal = document.querySelector(".containerM");
+      // let canvaModal = document.querySelector(".containerModal");
+      // let modal = document.querySelector(".containerM");
       setTimeout(() => {
-        canvaModal.style.background = "transparent";
-        modal.style.transform = "scale(0)";
-        modal.style.transition = ".3s";
+        // canvaModal.style.background = "transparent";
+        // modal.style.transform = "scale(0)";
+        // modal.style.transition = ".3s";
         setTimeout(() => {
-          this.$store.dispatch("showModal");
-          this.$store.dispatch("showModalImage");
+          if (this.$store.state._item.score >= 7) {
+            this.$store.dispatch("showModalImage");
+          } else {
+            this.$store.dispatch("showModal");
+          }
         }, 250);
       }, 300);
     },
