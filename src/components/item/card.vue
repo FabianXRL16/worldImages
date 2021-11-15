@@ -32,7 +32,6 @@ export default {
     width() {
       const BAR_WIDTH = 80;
       const MAX_SCORE = 20;
-      console.log((BAR_WIDTH / MAX_SCORE) * this.data.score ,"xddd")
       return (BAR_WIDTH / MAX_SCORE) * this.data.score;
     },
     styles() {
