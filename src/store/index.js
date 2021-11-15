@@ -10,7 +10,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     modal: false,
-    modalImage: false,
+    modalImage: true,
     _item: {},
     _images: [],
     _sellers: [],
