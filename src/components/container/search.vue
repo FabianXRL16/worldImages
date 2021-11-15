@@ -18,19 +18,26 @@ export default {
   data() {
     return {
       valueInput: "",
+      historySearch: [],
     };
   },
   components: {
     wiInput,
     btnFloat,
   },
-  created(){
-    this.$store.dispatch("sendImages", "house");
-  },
+  created() {},
   methods: {
     search() {
-      this.$emit("noShowTitle");
-      this.valueInput = "";
+      if (
+        this.valueInput.trim() &&
+        !this.historySearch.includes(this.valueInput)
+      ) {
+        this.$store.dispatch("sendImages", this.valueInput);
+        this.$store.dispatch("updateStateSeller");
+        this.historySearch.push(this.valueInput);
+        this.$emit("noShowTitle");
+      }
+        this.valueInput = "";
     },
   },
 };
