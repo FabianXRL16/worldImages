@@ -1,6 +1,10 @@
 <template>
   <div class="containerImages">
-    <card v-for="item in $store.state._data" :data="item" :key="item.id" />
+    <card
+      v-for="item in $store.state._sellers"
+      :data="item"
+      :key="item.identification"
+    />
   </div>
 </template>
 
@@ -13,8 +17,11 @@ export default {
   components: {
     card,
   },
-  data(){
-    return{}
+  data() {
+    return {};
+  },
+  created() {
+    this.$store.dispatch("getSellersAlegra");
   },
   methods: {},
 };
