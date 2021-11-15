@@ -1,6 +1,9 @@
 <template>
   <button @click="watch" class="card">
-    <div class="img" :style="`background-image:url(${data.img});`"></div>
+    <div
+      class="img"
+      :style="`background-image:url(${$store.state._images[data.id]});`"
+    ></div>
     <div class="seller">
       <i class="fas fa-user"></i>
       <span>{{ data.name }}</span>
@@ -10,7 +13,7 @@
       <div class="count">
         <i class="fas fa-star"></i>
         <label class="score">{{ data.score }}</label>
-        <div class="rule" :class="`rule${data.id}`"></div>
+        <div class="rule" :class="`rule${data.score}`"></div>
       </div>
     </div>
   </button>
@@ -27,7 +30,7 @@ export default {
   },
   methods: {
     watch() {
-      if (this.$store.state._data[this.data.id].state) {
+      if (this.data.state) {
         let $modalMsg = document.querySelector(".modalMsg");
         $modalMsg.style.transform = `${
           screen.width > 485 ? "translateY(100px)" : "translateY(80px)"
@@ -41,7 +44,7 @@ export default {
         this.$store.dispatch("showModal");
         this.$store.dispatch("showModalImage");
       }
-      this.$store.dispatch("sendDataItem", this.data.id);
+      this.$store.dispatch("sendDataItem", this.data.identification, this.index);
     },
   },
 };
