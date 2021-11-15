@@ -28,17 +28,18 @@ export default {
       default: () => {},
     },
   },
-  computed:{
+  computed: {
     width() {
       const BAR_WIDTH = 80;
       const MAX_SCORE = 20;
-      return BAR_WIDTH / MAX_SCORE * this.data.score;
+      console.log((BAR_WIDTH / MAX_SCORE) * this.data.score ,"xddd")
+      return (BAR_WIDTH / MAX_SCORE) * this.data.score;
     },
-    styles(){
+    styles() {
       return {
-        width: `${this.width}px`
-      }
-    }
+        width: `${this.width}px`,
+      };
+    },
   },
   methods: {
     watch() {
@@ -54,9 +55,12 @@ export default {
         }, 1500);
       } else {
         this.$store.dispatch("showModal");
-        this.$store.dispatch("showModalImage");
       }
-      this.$store.dispatch("sendDataItem", this.data.identification, this.index);
+      this.$store.dispatch(
+        "sendDataItem",
+        this.data.identification,
+        this.index
+      );
     },
   },
 };
