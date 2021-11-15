@@ -55,16 +55,6 @@ export default {
     addLike() {
       this.animationPoint();
 
-      // let selector = `rule${this.$store.state._item.id}`;
-      // let points = document.querySelector(selector);
-      // if (parseInt(this.$store.state._item.score) <= 18) {
-      //   points.style.width = `${points.offsetWidth + 9.833}px`;
-      //   this.$store.state._item.score =
-      //     this.$store.state._item.score === "18"
-      //       ? "20"
-      //       : parseInt(this.$store.state._item.score) + 3;
-      // }
-
       setTimeout(() => {
         this.closedModal();
       }, 500);
