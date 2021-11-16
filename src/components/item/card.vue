@@ -27,10 +27,10 @@ export default {
       type: Object,
       default: () => {},
     },
-    i:{
+    i: {
       type: Number,
       default: 0,
-    }
+    },
   },
   computed: {
     width() {
@@ -46,23 +46,17 @@ export default {
   },
   methods: {
     watch() {
+      let that = this;
       if (this.data.state) {
-        let $modalMsg = document.querySelector(".modalMsg");
-        $modalMsg.style.transform = `${
-          screen.width > 485 ? "translateY(100px)" : "translateY(80px)"
-        }`;
-        $modalMsg.style.transition = ".3s";
+        this.$store.dispatch("showModalMsg");
         setTimeout(function () {
-          $modalMsg.style.transform = "translateY(-150px)";
-          $modalMsg.style.transition = ".3s";
-        }, 1500);
+          that.$store?.dispatch("showModalMsg");
+          console.log("Hola")
+        }, 2500);
       } else {
         this.$store.dispatch("showModal");
       }
-      this.$store.dispatch(
-        "sendDataItem",
-        this.data.id,
-      );
+      this.$store.dispatch("sendDataItem", this.data.id);
     },
   },
 };
