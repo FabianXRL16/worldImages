@@ -3,7 +3,7 @@
     <wiHeader />
     <router-view />
     <modal-image v-if="$store.state.modal" />
-    <modal-msg />
+    <modal-msg v-if="$store.state.modalMsg" />
   </div>
 </template>
 
