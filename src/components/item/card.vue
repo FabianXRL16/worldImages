@@ -51,7 +51,6 @@ export default {
         this.$store.dispatch("showModalMsg");
         setTimeout(function () {
           that.$store?.dispatch("showModalMsg");
-          console.log("Hola")
         }, 2500);
       } else {
         this.$store.dispatch("showModal");
