@@ -1,5 +1,5 @@
 <template>
-  <div class="modalMsg" v-if="$store.state.modalMsg">
+  <div class="modalMsg">
     <div class="contentMsg">
       <h1>Lo lamento, ya voto por esta imagen</h1>
     </div>
