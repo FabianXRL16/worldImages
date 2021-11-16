@@ -61,7 +61,7 @@ export default {
     },
     closedModal() {
       setTimeout(() => {
-        if (this.$store.state._item.score >= 7) {
+        if (this.$store.state._item.score >= 20) {
           this.$store.dispatch("showModalImage");
         } else {
           this.$store.dispatch("showModal");
