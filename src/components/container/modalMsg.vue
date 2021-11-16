@@ -1,7 +1,8 @@
 <template>
   <div class="modalMsg">
     <div class="contentMsg">
-      <h1>Lo lamento, ya voto por esta imagen</h1>
+      <h1 v-if="$store.state.modalText">Lo lamento, ya voto por esta imagen</h1>
+      <h1 v-else>Lo lamento, ya busco esa palabra</h1>
     </div>
   </div>
 </template>

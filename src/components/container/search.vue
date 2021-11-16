@@ -28,14 +28,22 @@ export default {
   created() {},
   methods: {
     search() {
+      let that = this
       if (
         this.valueInput.trim() &&
-        !this.historySearch.includes(this.valueInput)
+        !this.historySearch.includes(this.valueInput.toLowerCase())
       ) {
         this.$store.dispatch("sendImages", this.valueInput);
         this.$store.dispatch("updateStateSeller");
-        this.historySearch.push(this.valueInput);
+        this.historySearch.push(this.valueInput.toLowerCase());
         this.$emit("noShowTitle");
+      }else{
+        that.$store?.dispatch("showModalMsg");
+        that.$store?.dispatch("showModalText");
+        setTimeout(function () {
+          that.$store?.dispatch("showModalText");
+          that.$store?.dispatch("showModalMsg");
+        }, 2500);
       }
         this.valueInput = "";
     },
