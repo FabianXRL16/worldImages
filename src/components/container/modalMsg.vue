@@ -1,6 +1,8 @@
 <template>
-  <div class="modalMsg">
-    <h1>Lo lamento, ya voto por esta imagen</h1>
+  <div class="modalMsg" v-if="$store.state.modalMsg">
+    <div class="contentMsg">
+      <h1>Lo lamento, ya voto por esta imagen</h1>
+    </div>
   </div>
 </template>
 
@@ -8,7 +10,6 @@
 export default {
   name: "modalMsg",
   props: {},
-  methods: {},
 };
 </script>
 
@@ -26,24 +27,50 @@ export default {
   left: 0;
   right: 0;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-content: center;
   border-radius: 8px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   transform: translateY(-150px);
-  transition: 0.3s;
+  animation: 2s showMsg 0.5s ease-in-out;
 }
-.modalMsg h1 {
+@keyframes showMsg {
+  0%,
+  100% {
+    transform: translateY(-150px);
+  }
+  20%,
+  80% {
+    transform: translateY(100px);
+  }
+}
+@media all and (max-width: 479px) {
+  @keyframes showMsg {
+    0%,
+    100% {
+      transform: translateY(-150px);
+    }
+    20%,
+    80% {
+      transform: translateY(85px);
+    }
+  }
+}
+.contentMsg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.modalMsg .contentMsg h1 {
   font-size: 20px;
   line-height: 30px;
   margin: 0;
 }
 @media all and (min-width: 960px) {
-  .modalMsg h1 {
-  font-size: 22px;
-  line-height: 30px;
-}
+  .modalMsg .contentMsg h1 {
+    font-size: 22px;
+    line-height: 30px;
+  }
 }
 </style>
