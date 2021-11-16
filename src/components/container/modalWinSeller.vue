@@ -4,8 +4,10 @@
     <h1>{{ $store.state._item.name }}</h1>
     <p>Primero en llegar a!</p>
     <div class="scoreFinal"><span>20</span><i class="fas fa-star"></i></div>
-    <button @click="getFacture">
-      <i class="fas fa-file-invoice"></i>Generar Factura
+    <button @click="getFacture" :disabled="facture">
+      <i :class="facture ? 'far fa-smile-wink' : 'fas fa-file-invoice'"></i>
+      <span v-if="facture">Factura Generada</span>
+      <span v-else>Generar Factura</span>
     </button>
   </div>
 </template>
@@ -14,6 +16,11 @@
 export default {
   name: "modalContainer",
   components: {},
+  data() {
+    return {
+      facture: false,
+    };
+  },
   methods: {
     getFacture() {
       this.$store.dispatch("getFacture", {
@@ -33,6 +40,7 @@ export default {
         idSeller: this.$store.state._item.id,
         operationType: "INTERNAL_SALE",
       });
+      this.facture = true;
     },
     getDate(today = true) {
       let date = new Date();
