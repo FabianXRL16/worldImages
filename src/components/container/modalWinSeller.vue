@@ -1,10 +1,12 @@
 <template>
   <div class="modalWiSeller">
-    <img class="user" src="../../assets/user.jpg" alt="" />
+    <img class="user" src="../../assets/avatar.svg" alt="" />
     <h1>{{ $store.state._item.name }}</h1>
     <p>Primero en llegar a!</p>
     <div class="scoreFinal"><span>20</span><i class="fas fa-star"></i></div>
-    <button @click="getFacture"><i class="fas fa-file-invoice"></i>Generar Factura</button>
+    <button @click="getFacture">
+      <i class="fas fa-file-invoice"></i>Generar Factura
+    </button>
   </div>
 </template>
 
@@ -13,14 +15,44 @@ export default {
   name: "modalContainer",
   components: {},
   methods: {
-    getFacture(){
-      console.log(this.$store.state._item.id)
-      // this.$store.dispatch(
-      //   "getFacture",
-      //   this.data.identification,
-      //   this.index
-      // );
-    }
+    getFacture() {
+      this.$store.dispatch("getFacture", {
+        date: `${this.getDate()}`,
+        dueDate: `${this.getDate(false)}`,
+        idUser: this.$store.state._user.id,
+        items: [
+          {
+            id: 1,
+            price: this.$store.state._sellers.reduce((a, b) => {
+              return a + b.score;
+            }, 0),
+            quantity: 1,
+            description: "Imagenes",
+          },
+        ],
+        idSeller: this.$store.state._item.id,
+        operationType: "INTERNAL_SALE",
+      });
+    },
+    getDate(today = true) {
+      let date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      if (!today) {
+        if (month + 1 === 13) {
+          month = 1;
+          year += 1;
+        } else {
+          month += 1;
+        }
+      }
+      if (month < 10) {
+        return `${year}-0${month}-${day}`;
+      } else {
+        return `${year}-${month}-${day}`;
+      }
+    },
   },
 };
 </script>
